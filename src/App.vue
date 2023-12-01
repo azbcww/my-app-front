@@ -2,15 +2,12 @@
   <main>
     <div :class="$style.container">
       <header :class="$style.header">
-        <router-link to="/">Home</router-link>
-        |
-        <router-link to="/ping">Ping</router-link>
-        |
-        <router-link to="/city/Tokyo">Tokyo</router-link>
-        |
-        <router-link to="/signup">SignUp</router-link>
+        <router-link to="/Calendar">Calendar</router-link>
         |
         <router-link to="/login">Login</router-link>
+        |
+        <router-link to="/signup">SignUp</router-link>
+        
       </header>
 
       <router-view />

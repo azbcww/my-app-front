@@ -1,8 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import router from '../router'
 
 const username = ref<string>('')
 const password = ref<string>('')
+
+const notSatisfy = ref()
+
 const signup = () =>
   fetch('/api/signup', {
     method: 'POST',
@@ -11,17 +15,30 @@ const signup = () =>
     },
     body: JSON.stringify({ username: username.value, password: password.value })
   })
+  .then( res => {
+    if (res.ok) {
+        router.push('/ping')
+    }else {
+        notSatisfy.value = true
+    }
+  })
+  .catch ( e => {
+    console.log(e)
+  })
 </script>
 
 <template>
   <div class="signup">
-    <h1>This is an signup page</h1>
+    <h1 style="text-align: center">Signup</h1>
     <div>
-      <input type="text" v-model="username" />
-      <input type="password" v-model="password" />
+      <div>
+      <input type="text" v-model="username" placeholder="username"/>
+      <input type="password" v-model="password" placeholder="password"/>
+    </div>
     </div>
     <div>
-      <button @click="signup">login</button>
+      <button @click="signup">signup</button>
     </div>
+    <div v-if="notSatisfy">登録済みのユーザーか不正な文字を使用しています</div>
   </div>
 </template>

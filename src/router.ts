@@ -5,10 +5,11 @@ import PingPage from './pages/PingPage.vue'
 import LoginPage from './pages/LoginPage.vue'
 import SignupPage from './pages/SignupPage.vue'
 import CityPage from './pages/CityPage.vue'
+import CalendarPage from './pages/CalendarPage.vue'
 
 const routes = [
-  { path: '/', name: 'home', component: HomePage, meta: { isPublic: true } },
-  { path: '/ping', name: 'ping', component: PingPage },
+  // { path: '/', name: 'home', component: HomePage, meta: { isPublic: true } },
+  { path: '/calendar', name: 'calendar', component: CalendarPage },
   {
     path: '/signup',
     name: 'signup',
@@ -21,7 +22,6 @@ const routes = [
     component: LoginPage,
     meta: { isPublic: true }
   },
-  { path: '/city/:cityName', name: 'city', component: CityPage, props: true },
   { path: '/:path(.*)', component: NotFound, meta: { isPublic: true } }
 ]
 
