@@ -8,7 +8,7 @@ import CityPage from './pages/CityPage.vue'
 import CalendarPage from './pages/CalendarPage.vue'
 
 const routes = [
-  // { path: '/', name: 'home', component: HomePage, meta: { isPublic: true } },
+  { path: '/', name: 'home', component: LoginPage, meta: { isPublic: true } },
   { path: '/calendar', name: 'calendar', component: CalendarPage },
   {
     path: '/signup',

@@ -29,7 +29,7 @@ const signup = () =>
 
 <template>
   <div class="signup">
-    <h1 style="text-align: center">Signup</h1>
+    <h1 style="text-align: center">SignUp</h1>
     <div>
       <div>
       <input type="text" v-model="username" placeholder="username"/>
