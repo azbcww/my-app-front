@@ -17,7 +17,7 @@ const signup = () =>
   })
   .then( res => {
     if (res.ok) {
-        router.push('/ping')
+        router.push('/calendar')
     }else {
         notSatisfy.value = true
     }

@@ -12,8 +12,9 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@popperjs/core": "^2.11.8",
-    "v-calendar": "^3.1.2",
+    "@fullcalendar/core": "^6.1.10",
+    "@fullcalendar/interaction": "^6.1.10",
+    "@fullcalendar/vue3": "^6.1.10",
     "vue": "^3.3.2",
     "vue-router": "^4.2.5"
   },
