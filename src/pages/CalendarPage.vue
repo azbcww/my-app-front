@@ -17,6 +17,7 @@ export default {
   }
 }
 </script>
+
 <template>
   <FullCalendar :options="calendarOptions" />
 </template>
