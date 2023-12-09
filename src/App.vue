@@ -2,7 +2,7 @@
   <main>
     <div :class="$style.container">
       <header :class="$style.header">
-        <router-link to="/Calendar">Calendar</router-link>
+        <router-link to="/calendar">Calendar</router-link>
         |
         <router-link to="/login">Login</router-link>
         |
