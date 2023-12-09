@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
+import VCalendar from 'v-calendar'
+import 'v-calendar/style.css'
 
 const pong = ref<string>('no data')
 
