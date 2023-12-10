@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import { nextTick, ref } from 'vue'
+import { ref } from 'vue'
+import { useUserInfoStore } from '@/store/userInfo';
 import router from '../router'
 
 const username = ref<string>('')
 const password = ref<string>('')
 
 const notSatisfy = ref()
+
+const userInfoStore = useUserInfoStore()
 
 const login = () =>
   fetch('/api/login', {
@@ -18,6 +21,7 @@ const login = () =>
   .then( res => {
     console.log(res)
     if (res.ok) {
+        userInfoStore.setUserName(username.value)
         router.push('/calendar')
     }else {
         notSatisfy.value = true

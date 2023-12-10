@@ -16,6 +16,8 @@
     "@fullcalendar/daygrid": "^6.1.10",
     "@fullcalendar/interaction": "^6.1.10",
     "@fullcalendar/vue3": "^6.1.10",
+    "pinia": "^2.1.7",
+    "pinia-plugin-persistedstate": "^3.2.0",
     "vue": "^3.3.2",
     "vue-router": "^4.2.5"
   },
