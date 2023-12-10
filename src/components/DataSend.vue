@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { ref, computed} from 'vue'
 import { useUserInfoStore } from '@/store/userInfo';
+import { useEventStore } from '@/store/event'
+import type { MyEvent, ResponseData } from '../interfaces'
 
 const userInfoStore = useUserInfoStore()
+const eventStore = useEventStore()
 const data = ref("")
 
 const isDisabled = computed(
@@ -20,19 +23,33 @@ const send = () =>
         body: JSON.stringify({ username: userInfoStore.userName, data: data.value })
     })
     .then( res => {
-        console.log(res)
         if (res.ok) {
-            // userInfoStore.setUserName(username.value)
-            // router.push('/calendar')
-            data.value="true"
+            const event = res.json()
+            return event
         }else {
-            // notSatisfy.value = true
-            data.value="false"
+            return Promise.reject(new Error('error'));
         }
+    })
+    .then(res => {
+        console.log()
+        const event = res as ResponseData
+        if (event.error != "") {
+            console.log(event.error)
+            return
+        }
+        const ID = eventStore.getEvents.length + 1
+        eventStore.setEvent({
+            id: String(ID),
+            title: data.value,
+            start: event.start,
+            end: event.end,
+        })
+        data.value=""
     })
     .catch ( e => {
         console.log(e)
     })
+    
 
 
 </script>

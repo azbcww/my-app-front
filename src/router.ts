@@ -1,10 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomePage from './pages/HomePage.vue'
 import NotFound from './pages/NotFound.vue'
-import PingPage from './pages/PingPage.vue'
 import LoginPage from './pages/LoginPage.vue'
 import SignupPage from './pages/SignupPage.vue'
-import CityPage from './pages/CityPage.vue'
 import CalendarPage from './pages/CalendarPage.vue'
 
 const routes = [
