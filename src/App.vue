@@ -21,7 +21,7 @@ const userName = computed(
           |
           <router-link to="/signup">SignUp</router-link>
         </div>
-        <nobr :class="$style.header" v-if="userName!=''">&nbsp; User:<b>{{ userName }}</b></nobr>
+        <div :class="$style.header" v-if="userName!=''">&nbsp; User:<b>{{ userName }}</b></div>
       </header>
       
       <router-view />

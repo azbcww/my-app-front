@@ -3,6 +3,7 @@ import NotFound from './pages/NotFound.vue'
 import LoginPage from './pages/LoginPage.vue'
 import SignupPage from './pages/SignupPage.vue'
 import CalendarPage from './pages/CalendarPage.vue'
+import { useUserInfoStore } from '@/store/userInfo'
 
 const routes = [
   { path: '/', name: 'home', component: LoginPage, meta: { isPublic: true } },
@@ -17,7 +18,7 @@ const routes = [
     path: '/login',
     name: 'login',
     component: LoginPage,
-    meta: { isPublic: true }
+    meta: { isPublic: true}
   },
   { path: '/:path(.*)', component: NotFound, meta: { isPublic: true } }
 ]
@@ -28,11 +29,29 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to) => {
+  if (!sessionStorage.getItem('initial')){
+    console.log('initial access')
+    sessionStorage.setItem('initial', 'true')
+    interface meData {
+      username: string
+    }
+    const res = await fetch('/api/me')
+    if (res.ok) {
+      res.json().then((data) => {
+        const me = data as meData
+        const userInfoStore = useUserInfoStore()
+        userInfoStore.setUserName(me.username)
+      })
+      return true
+    }
+  }
+  const userInfoStore = useUserInfoStore()
+  if (userInfoStore.getNameFromSession() != '') {
+    return true
+  }
   if (to.meta.isPublic) {
     return true
   }
-  const res = await fetch('/api/me')
-  if (res.ok) return true
   return '/login'
 })
 

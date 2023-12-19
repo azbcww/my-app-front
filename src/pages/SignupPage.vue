@@ -19,6 +19,7 @@ const signup = () =>
     body: JSON.stringify({ username: username.value, password: password.value })
   })
   .then( res => {
+    console.log(res)
     if (res.ok) {
         userInfoStore.setUserName(username.value)
         router.push('/calendar')
