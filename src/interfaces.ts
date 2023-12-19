@@ -10,3 +10,7 @@ export interface ResponseData {
   end: string
   error: string
 }
+
+export interface IsRemoved {
+  errro: string
+}

@@ -5,9 +5,9 @@ export const useUserInfoStore = defineStore({
   state: () => ({
     userName: ''
   }),
-  // getters: {
-  //   getName: (state) => state.userName
-  // },
+  getters: {
+    getName: (state) => state.userName
+  },
   actions: {
     setUserName(name: string) {
       this.userName = name
