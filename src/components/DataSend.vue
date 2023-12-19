@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { ref, computed} from 'vue'
-import { useUserInfoStore } from '@/store/userInfo';
-import { useEventStore } from '@/store/event'
-import type { MyEvent, ResponseData } from '../interfaces'
+import { useUserInfoStore } from '@/store/userInfo'
+import type { MyEvent, ResponseData } from '@/interfaces'
 
 const userInfoStore = useUserInfoStore()
-const eventStore = useEventStore()
 const data = ref("")
 
 const isDisabled = computed(
@@ -27,24 +25,19 @@ const send = () =>
             const event = res.json()
             return event
         }else {
-            return Promise.reject(new Error('error'));
+            return Promise.reject(new Error('error'))
         }
     })
     .then(res => {
-        console.log()
         const event = res as ResponseData
         if (event.error != "") {
+            alert("入力データのフォーマットが不正です．\n開始日と終了日の年，月，日(時)を指定してください．\n\n引用\n\"日付表現で不足している情報があった場合、yearは実行時の年、monthおよびdayは1が補完されます。\"\n日付型/時間型への変換[https://ja-timex.github.io/docs/to_datetime/]")
             console.log(event.error)
             return
         }
-        const ID = eventStore.getEvents.length + 1
-        eventStore.setEvent({
-            id: String(ID),
-            title: data.value,
-            start: event.start,
-            end: event.end,
-        })
+        alert("次の予定を作成しました．\ntitle: " + data.value + "\nstart: " + event.start + "\nsend: " + event.end)
         data.value=""
+        location.reload()
     })
     .catch ( e => {
         console.log(e)

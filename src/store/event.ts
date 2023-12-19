@@ -12,9 +12,6 @@ export const useEventStore = defineStore({
   actions: {
     setEvent(event: MyEvent) {
       this.events.push(event)
-    },
-    removeEvent(id: number) {
-
     }
   }
 })

@@ -1,10 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import NotFound from './pages/NotFound.vue'
-import LoginPage from './pages/LoginPage.vue'
-import SignupPage from './pages/SignupPage.vue'
-import CalendarPage from './pages/CalendarPage.vue'
+import NotFound from '@/pages/NotFound.vue'
+import LoginPage from '@/pages/LoginPage.vue'
+import SignupPage from '@/pages/SignupPage.vue'
+import CalendarPage from '@/pages/CalendarPage.vue'
 import { useUserInfoStore } from '@/store/userInfo'
-
 const routes = [
   { path: '/', name: 'home', component: LoginPage, meta: { isPublic: true } },
   { path: '/calendar', name: 'calendar', component: CalendarPage },
@@ -30,7 +29,6 @@ const router = createRouter({
 
 router.beforeEach(async (to) => {
   if (!sessionStorage.getItem('initial')){
-    console.log('initial access')
     sessionStorage.setItem('initial', 'true')
     interface meData {
       username: string
