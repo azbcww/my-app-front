@@ -12,5 +12,5 @@ export interface ResponseData {
 }
 
 export interface IsRemoved {
-  errro: string
+  error: string
 }

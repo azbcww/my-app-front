@@ -7,8 +7,7 @@ import interactionPlugin from '@fullcalendar/interaction'
 import DataSend from '@/components/DataSend.vue'
 import { useEventStore } from '@/store/event'
 import { useUserInfoStore } from '@/store/userInfo'
-import type { IsRemoved, MyEvent } from '@/interfaces'
-import ModalMulti from "@/components/modal-multi.vue"
+import type { IsRemoved } from '@/interfaces'
 
 const eventStore = useEventStore()
 const userInfoStore = useUserInfoStore()
@@ -40,7 +39,7 @@ const calendarOptions = ref({
   initialView: 'dayGridMonth',
   displayEventTime: false,
   events: eventStore.getEvents,
-  eventClick: function(info) {
+  eventClick: function(info: eventClickInfo) {
     if (confirm('次の予定を削除しますか？\n' + info.event.title)) {
       fetch('/api/remove', {
           method: 'POST',

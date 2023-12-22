@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed} from 'vue'
 import { useUserInfoStore } from '@/store/userInfo'
-import type { MyEvent, ResponseData } from '@/interfaces'
+import type { ResponseData } from '@/interfaces'
 
 const userInfoStore = useUserInfoStore()
 const data = ref("")
