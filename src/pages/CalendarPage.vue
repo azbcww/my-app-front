@@ -39,7 +39,7 @@ const calendarOptions = ref({
   initialView: 'dayGridMonth',
   displayEventTime: false,
   events: eventStore.getEvents,
-  eventClick: function(info: eventClickInfo) {
+  eventClick: function(info) {
     if (confirm('次の予定を削除しますか？\n' + info.event.title)) {
       fetch('/api/remove', {
           method: 'POST',
